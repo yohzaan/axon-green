@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<odoo>
+<act_window id="qmgnt_app.action_todo_task" name="Quality Dashboard"
+res_model="quality_alert_team" view_mode="kanban,form"
+context="{'search_default_filter_my_tasks': True}" />
+<record id="custom_sales_dashboard_action" model="ir.actions.act_window">
+    <field name="name">Dashboard</field>
+    <field name="res_model">quality_alert_team</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="context">{'default_id' : "team_name"}</field>
+    <field name="view_mode">kanban</field>
+</record>
+
+
+
+<record id="channel_dashboard_kanban_view" model="ir.ui.view">
+    <field name="name">Dashboard</field>
+    <field name="model">quality_alert_team</field>
+    <field name="context">{'default_product_id':team_name}</field>
+    <field name="arch" type="xml">
+        <kanban class="oe_background_grey o_kanban_dashboard o_project_kanban " create="0">
+            <field name="color"/>
+            <field name="name"/>
+            <templates>
+             <t t-name="kanban-box">
+                    <div t-attf-class="#{kanban_color(record.color.raw_value)} ">
+                        <div class="o_project_kanban_manage" style="float:right">
+                            <a class="o_kanban_manage_toggle_button" href="#">More
+                                <i class="fa fa-caret-down"/>
+                            </a>
+                        </div>
+                        <div class="o_project_kanban_main" >
+                            <div class="o_kanban_card_content o_visible">
+                                <div class="o_kanban_primary_left" >
+                                    <div class="">
+                                        <center>
+                                            <span>
+                                                <h1><field name="team_name"/></h1>
+                                                 <Text><field name="email"/></Text>
+                                            </span>
+                                        </center>
+                                    </div>
+                                    <div>
+
+                                            <button class="btn btn-primary" type="action" name="%(action_todo_task3)d" string="Quality Alerts" style="float:left, padding:'20px'"><field name="alert_count" /> Quality Alerts</button>
+                                            <button class="btn btn-primary" type="action" name="%(action_todo_task2)d" style="float:right">Check in progress: <field name="check_count" /></button>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_kanban_card_manage_pane o_invisible" >
+                                <div class="col-xs-6 o_kanban_card_manage_section o_kanban_manage_view">
+                                    <div class="o_kanban_card_manage_title">
+                                        <span>View</span>
+                                    </div>
+
+
+                                    <div>
+                                        <a type="action">Setting</a>
+                                    </div>
+                                    <div>
+                                        <a type="action">Cancel</a>
+                                    </div>
+                                </div>
+                                <div t-if="widget.editable" class="o_project_kanban_colorpicker" >
+                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+               </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+<record id="view_form_alert_team" model="ir.ui.view">
+<field name="name">Quality Alert Team Form</field>
+<field name="model">quality_alert_team</field>
+
+<field name="arch" type="xml">
+<form>
+<header>
+
+
+
+
+</header>
+<sheet>
+<group name="group_top">
+<field name="team_name" />
+</group>
+
+<group name="group_bottom">
+
+<field name="email" />
+</group>
+
+
+
+
+
+</sheet>
+</form>
+</field>
+</record>
+
+
+<record id="view_tree_todo_task55" model="ir.ui.view">
+<field name="name">Quality Team Tree </field>
+<field name="model">quality_alert_team</field>
+<field name="arch" type="xml">
+<tree>
+<field name="team_name"/>
+
+
+</tree>
+</field>
+</record>
+
+
+</odoo>

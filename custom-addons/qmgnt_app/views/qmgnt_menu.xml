@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Action to open To-do Task list -->
+    <act_window id="action_todo_task"
+                name="Quality Dashboard"
+                res_model="quality_alert_team"
+                view_mode="kanban"/>
+
+    <act_window id="action_todo_task13"
+                name="Product"
+                res_model="productdata"
+                view_mode="tree,form"/>
+
+    <act_window id="action_todo_task0"
+                name="Quality Control Points"
+                res_model="quality.product"
+                view_mode="tree,form"/>
+    <act_window id="action_todo_task1"
+                name="Quality Teams"
+                res_model="quality_alert_team"
+                view_mode="tree,form"/>
+
+    <act_window id="action_todo_task2"
+                name="Quality Check"
+                res_model="quality_check"
+                view_mode="tree,form"/>
+    <act_window id="action_todo_task01"
+                name="Quality Check"
+                res_model="quality_check"
+                view_mode="form"/>
+    <act_window id="action_todo_task02"
+                name="Quality Alert"
+                res_model="quality_alert"
+                view_mode="form"/>
+
+    <act_window id="action_todo_task8"
+                name="Quality Alert"
+                res_model="quality_alert"
+                view_mode="graph,kanban,tree,pivot"/>
+
+    <act_window id="action_todo_task9"
+                name="Quality Check"
+                res_model="quality_check"
+                view_mode="graph,kanban,tree,pivot"/>
+
+    <act_window id="action_todo_task3"
+                name="Quality Alert"
+                res_model="quality_alert"
+                view_mode="tree,form,kanban"/>
+
+    <!-- Menu item to open To-do Task list -->
+    <menuitem id="menu_todo_task"
+              name="Quality"
+              web_icon="qmgnt_app,static/description/icon.png"/>
+
+    <menuitem id="menu_a_id" name="Dashboard" parent="menu_todo_task" sequence="1" action="action_todo_task"/>
+    <menuitem id="menu_b_id" name="Quality Control" parent="menu_todo_task" sequence="2" action="action_todo_task"/>
+    <menuitem id="menu_b_id1" name="Quality Cotrol Points" parent="menu_b_id" sequence="1" action="action_todo_task0"/>
+
+    <menuitem id="menu_b_id2" name="Quality Alerts" parent="menu_b_id" sequence="3" action="action_todo_task3"/>
+    <menuitem id="menu_b_id3" name="Quality Checks" parent="menu_b_id" sequence="2" action="action_todo_task2"/>
+    <menuitem id="menu_c_id" name="Reporting" parent="menu_todo_task" sequence="3" action="action_todo_task1"/>
+    <menuitem id="menu_c_id2" name="Quality Alerts" parent="menu_c_id" sequence="2" action="action_todo_task8"/>
+    <menuitem id="menu_c_id3" name="Quality Checks" parent="menu_c_id" sequence="1" action="action_todo_task9"/>
+    <menuitem id="menu_d_id" name="Configuration" parent="menu_todo_task" sequence="4" action="action_todo_task1"/>
+    <menuitem id="menu_d_id1" name="Quality team " parent="menu_d_id" sequence="1" action="action_todo_task1"/>
+    <menuitem id="menu_d_id2" name="Product " parent="menu_d_id" sequence="2" action="action_todo_task13"/>
+
+
+</odoo>

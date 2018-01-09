@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<odoo>
+<act_window id="qmgnt_app.action_todo_task2" name="Quality Check"
+res_model="quality_check" view_mode="kanban,tree,form,graph,pivot"
+context="{'search_default_filter_my_tasks': True}" />
+<record id="sequence_lds_obj1" model="ir.sequence">
+    <field name="name">Objective Reference1</field>
+    <field name="code">bharpai.bharpai1</field>
+    <field name="prefix">QC</field>
+    <field name="padding">5</field>
+</record>
+<record id="view_form_todo_task" model="ir.ui.view">
+<field name="name">Quality Check Task Form</field>
+<field name="model">quality_check</field>
+<field name="arch" type="xml">
+<form>
+<header>
+<button name="do_Pass" class="oe_highlight" type="object"
+string="Pass" attrs="{'invisible':[('status', '==', 'open')]}" />
+<button name="do_Fail" class="oe_highlight" type="object"
+string="Fail" attrs="{'invisible':[('status', '!=', 'draft')]}"/>
+<button name="open_class" class="oe_highlight" type="object"
+string="Make Alert" attrs="{'invisible':[('status', '==', 'draft')]}"/>
+
+<field name="status" widget="statusbar"   statusbar_visible="draft,open,done"
+       />
+
+
+
+
+</header>
+<sheet>
+<group name="group_top">
+<group name="group_left">
+<field name="product_name" />
+<field name="test_type" invisible="1" />
+<field name="measure" attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+<field name="check_date" invisible="1" />
+<field name="check_by" invisible="1"/>
+
+
+
+</group>
+<group name="group_right">
+<field name="operation" />
+
+    <field name="point_id" String="Control Point"/>
+<field name="team_name" String="Team" />
+
+
+
+
+
+
+</group>
+</group>
+<group name="group_bottom">
+<notebook position="after">
+<page string="Notes">
+        <field name="notes" widget="html"/>
+ </page>
+
+</notebook>
+</group>
+
+
+
+
+
+</sheet>
+</form>
+</field>
+</record>
+
+
+
+
+
+<record id="view_tree_todo_task" model="ir.ui.view">
+<field name="name">quality check Task Form</field>
+<field name="model">quality_check</field>
+ <field name="view_mode" >tree,kanban,form</field >
+<field name="arch" type="xml">
+<tree>
+<field name="sequence_id" />
+
+<field name="product_name"/>
+<field name="check_date"/>
+<field name="check_by" String="Checked By"/>
+    <field name="status" />
+
+
+
+</tree>
+</field>
+</record>
+
+<record id="qmgnt Task Kanban2" model="ir.ui.view">
+<field name="model">quality_check</field>
+<field name="arch" type="xml">
+<kanban default_group_by="status" class="o_kanban_small_column" >
+<!-- Fields to use in expressions... -->
+<field name="sequence_id" />
+
+
+
+<field name="product_name" />
+ <field name="status" />
+<!-- (...add other used fields). -->
+<templates>
+<t t-name="kanban-box">
+<!-- HTML QWeb template... -->
+     <div class="oe_product_vignette">
+                                <a type="open">
+                                      </a>
+                                <div class="oe_product_desc">
+                                    <h4>
+                                        <a type="edit">
+                                           <field name="sequence_id" />
+                                        </a>
+                                    </h4>
+                                    <h3 style="float:right"> <field name="status" /></h3>
+                                    <ul>
+                                        <li><field name="product_name" /> </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+</t>
+</templates>
+</kanban>
+</field>
+</record>
+
+
+
+</odoo>

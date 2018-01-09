@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<odoo>
+<act_window id="qmgnt_app.action_todo_task3" name="Quality Alert"
+res_model="quality_alert" view_mode="kanban,tree,form,graph,pivot"
+context="{'search_default_filter_my_tasks': True}"
+
+/>
+<record id="sequence_lds_obj2" model="ir.sequence">
+    <field name="name">Objective Reference2</field>
+    <field name="code">bharpai.bharpai2</field>
+    <field name="prefix">QA</field>
+    <field name="padding">5</field>
+</record>
+<record id="view_form_todo_task1" model="ir.ui.view">
+<field name="name">Quality Alert Task Form</field>
+<field name="model">quality_alert</field>
+
+<field name="arch" type="xml">
+<form>
+<header>
+<button name="do_confirm" class="oe_highlight" type="object"
+string="Confirm" attrs="{'invisible':[('stage', '!=', 'one')]}" />
+<button name="do_action" class="oe_highlight" type="object"
+string="Action Proposed" attrs="{'invisible':[('stage', '!=', 'two'),('stage', '!=', 'one')]}" />
+<button name="do_finish" class="oe_highlight" type="object"
+string="Solved" attrs="{'invisible':[('stage', '!=', 'three'),('stage', '!=', 'two'),('stage', '!=', 'one')]}" />
+
+
+<field name="stage" widget="statusbar" />
+<field name="Check" invisible="1"/>
+
+</header>
+<sheet>
+<group name="group_top">
+<group name="group_left">
+
+</group>
+
+<group name="group_right">
+
+</group>
+</group>
+
+<group name="group_bottom">
+<group name="group_left">
+
+
+<field name="product_name"/>
+
+
+
+
+
+
+</group>
+<group name="group_right">
+
+
+<field name="team_id" String="Team" />
+<field name="person_name" String="Responsible" />
+<field name="tag_ids" String="Tag" />
+<field name="reason_id" String="Reason"/>
+<field name="priority" widget="priority" eval="15"/>
+
+</group>
+
+</group>
+
+<group name="below">
+<notebook position="after">
+<page string="Description">
+    <field name="description" widget='html' />
+ </page>
+ <page string="CORRECTIVE ACTIONS">
+        <field name="action_corrective" widget='html'/>
+ </page>
+
+
+    <page string="PREVENTIVE ACTIONS">
+
+        <field name="action_preventive" widget='html' />
+    </page>
+</notebook>
+
+
+
+</group>
+</sheet>
+</form>
+</field>
+</record>
+
+
+
+<record id="view_tree_todo_task1" model="ir.ui.view">
+<field name="name">Quality Alert Task Form</field>
+<field name="model">quality_alert</field>
+
+<field name="arch" type="xml">
+<tree>
+
+<field name="sequence_id" String="Reference"/>
+    <field name="Check" String="Check"/>
+
+<field name="stage" String="Stage"/>
+<field name="description"/>
+
+
+
+</tree>
+
+</field>
+</record>
+<record id="qmgnt Task Kanban" model="ir.ui.view">
+<field name="model">quality_alert</field>
+<field name="arch" type="xml">
+<kanban default_group_by="stage" class="o_kanban_small_column" >
+<!-- Fields to use in expressions... -->
+
+<field name="product_name" />
+    <field name="sequence_id" String="Reference"/>
+<field name="priority" />
+
+<!-- (...add other used fields). -->
+<templates>
+<t t-name="kanban-box">
+<!-- HTML QWeb template... -->
+      <div class="oe_product_vignette">
+
+                                <div class="oe_product_desc">
+                                    <h4>
+                                        <a type="edit">
+                                            <field name="product_name"></field>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li><field name="sequence_id" String="Reference"/> </li>
+                                        <li><field name="priority" widget="priority" /> </li>
+                                    </ul>
+                                </div>
+                            </div>
+</t>
+</templates>
+</kanban>
+</field>
+</record>
+
+
+</odoo>

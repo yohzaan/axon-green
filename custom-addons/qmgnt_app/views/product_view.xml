@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<odoo>
+
+<record id="view_form_todo_task13" model="ir.ui.view">
+<field name="name"> Product Form</field>
+<field name="model">productdata</field>
+
+
+
+<field name="arch" type="xml">
+<form>
+<header>
+
+
+
+
+
+</header>
+<sheet>
+
+<group name="group_top">
+<group name="group_left">
+
+<field name="product_name" String="Product"/>
+
+
+
+
+
+</group>
+<group name="group_right">
+
+<field name="test_type" String="Test type"  />
+        <label for="lead_days"  String="Norm" attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+            <div class="o_row" attrs="{'invisible':[('test_type', '!=', 'two')]}">
+                <field name="norm"
+attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+                <field name="norm_unit"
+attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+             </div>
+         <label for="lead_days"  String="Tolerance" attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+            <div class="o_row" attrs="{'invisible':[('test_type', '!=', 'two')]}">
+              From  <field name="tolerance_min"
+attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+               To
+                <field name="tolerance_max"
+attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+            </div>
+
+
+
+
+
+
+</group>
+</group>
+<group name="group_bottom">
+
+</group>
+
+</sheet>
+</form>
+</field>
+</record>
+
+
+
+
+
+<record id="view_tree_todo_task013" model="ir.ui.view">
+<field name="name">Product Form </field>
+<field name="model">productdata</field>
+<field name="arch" type="xml">
+<tree>
+
+<field name="product_name" String="Product"/>
+
+
+</tree>
+</field>
+</record>
+
+
+
+
+
+
+</odoo>

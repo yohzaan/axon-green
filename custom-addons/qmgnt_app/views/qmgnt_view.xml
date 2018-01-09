@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+
+<odoo>
+<record id="sequence_lds_obj" model="ir.sequence">
+    <field name="name">Objective Reference</field>
+    <field name="code">bharpai.bharpai</field>
+    <field name="prefix">QCP</field>
+    <field name="padding">5</field>
+</record>
+<record id="view_form_todo_task0" model="ir.ui.view">
+<field name="name">Quality Product Task Form</field>
+<field name="model">quality.product</field>
+<field name="context">{"search_default_groupby_sequence_id" : True}</field>
+
+
+<field name="arch" type="xml">
+<form>
+<header>
+<button  class="oe_highlight" type="object" name="open_second_class"
+
+string="Quality check" />
+
+
+
+
+
+</header>
+<sheet>
+
+<group name="group_top">
+<group name="group_left">
+
+<field name="title" String="Title"/>
+<field name="product_name" String="Product"/>
+<field name="operation_name" String="Operation"/>
+
+
+
+
+</group>
+<group name="group_right">
+<field name="control_type"/>
+
+         <label for="lead_days" String="Measure frequency" attrs="{'invisible':[('control_type', '!=', 'two'),('control_type', '!=', 'three')]}"/>
+            <div class="o_row" attrs="{'invisible':[('control_type', '!=', 'two'),('control_type', '!=', 'three')]}">
+            Every
+                            <field name="measure_frequency_unit_value"
+attrs="{'invisible':[('control_type', '!=', 'two'),('control_type', '!=', 'three')]}"/>
+                <text attrs="{'invisible':[('control_type', '!=', 'two')]}">% of operation</text>
+            <field name="measure_frequency_unit"
+attrs="{'invisible':[('control_type', '!=', 'three')]}"/>
+            </div>
+
+<field name="test_type" String="Test type"  />
+        <label for="lead_days"  String="Norm" attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+            <div class="o_row" attrs="{'invisible':[('test_type', '!=', 'two')]}">
+                <field name="norm"
+attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+                <field name="norm_unit"
+attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+             </div>
+         <label for="lead_days"  String="Tolerance" attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+            <div class="o_row" attrs="{'invisible':[('test_type', '!=', 'two')]}">
+              From  <field name="tolerance_min"
+attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+               To
+                <field name="tolerance_max"
+attrs="{'invisible':[('test_type', '!=', 'two')]}"/>
+            </div>
+
+<field name="team_name" String="Team" />
+<field name="person_name" String="Responsible"/>
+
+
+
+
+
+</group>
+</group>
+<group name="group_bottom">
+<notebook position="after">
+<page string="Instruction">
+        <field name="instruction" widget="html"/>
+ </page>
+<page string="Notes">
+        <field name="notes" widget="html"/>
+ </page>
+<page string="Message if failure" attrs="{'invisible':[('test_type', '!=', 'one'),('test_type', '!=', 'two')]}">
+        <field name="message" widget="html" />
+ </page>
+
+</notebook>
+</group>
+
+</sheet>
+</form>
+</field>
+</record>
+
+
+
+
+
+<record id="view_tree_todo_task0" model="ir.ui.view">
+<field name="name">Quality Product Task Form </field>
+<field name="model">quality.product</field>
+<field name="arch" type="xml">
+<tree>
+<field name="sequence_id"/>
+<field name="title" String="Title"/>
+<field name="product_name" String="Product"/>
+<field name="operation_name" String="Operation Type"/>
+
+</tree>
+</field>
+</record>
+
+
+
+
+
+
+</odoo>
